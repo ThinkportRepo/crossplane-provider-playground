@@ -20,16 +20,16 @@ import (
 	"github.com/crossplane/crossplane-runtime/pkg/controller"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	"github.com/crossplane/provider-template/internal/controller/config"
-	"github.com/crossplane/provider-template/internal/controller/mytype"
+	"github.com/ThinkportRepo/crossplane-provider-playground/internal/controller/config"
+	"github.com/ThinkportRepo/crossplane-provider-playground/internal/controller/ipv4network"
 )
 
-// Setup creates all Template controllers with the supplied logger and adds them to
+// Setup creates all xacinfoblox controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		config.Setup,
-		mytype.Setup,
+		ipv4network.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

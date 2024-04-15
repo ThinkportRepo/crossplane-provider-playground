@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The Crossplane Authors.
+Copyright 2022 The Crossplane Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -25,63 +25,62 @@ import (
 	xpv1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-// MyTypeParameters are the configurable fields of a MyType.
-type MyTypeParameters struct {
+// IPv4NetworkParameters are the configurable fields of a IPv4Network.
+type IPv4NetworkParameters struct {
 	ConfigurableField string `json:"configurableField"`
 }
 
-// MyTypeObservation are the observable fields of a MyType.
-type MyTypeObservation struct {
-	ConfigurableField string `json:"configurableField"`
-	ObservableField   string `json:"observableField,omitempty"`
+// IPv4NetworkObservation are the observable fields of a IPv4Network.
+type IPv4NetworkObservation struct {
+	ObservableField string `json:"observableField,omitempty"`
 }
 
-// A MyTypeSpec defines the desired state of a MyType.
-type MyTypeSpec struct {
+// A IPv4NetworkSpec defines the desired state of a IPv4Network.
+type IPv4NetworkSpec struct {
 	xpv1.ResourceSpec `json:",inline"`
-	ForProvider       MyTypeParameters `json:"forProvider"`
+	ForProvider       IPv4NetworkParameters `json:"forProvider"`
 }
 
-// A MyTypeStatus represents the observed state of a MyType.
-type MyTypeStatus struct {
+// A IPv4NetworkStatus represents the observed state of a IPv4Network.
+type IPv4NetworkStatus struct {
 	xpv1.ResourceStatus `json:",inline"`
-	AtProvider          MyTypeObservation `json:"atProvider,omitempty"`
+	AtProvider          IPv4NetworkObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// A MyType is an example API type.
+// A IPv4Network is an example API type.
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
-// +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,template}
-type MyType struct {
+// +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,xacinfoblox}
+type IPv4Network struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   MyTypeSpec   `json:"spec"`
-	Status MyTypeStatus `json:"status,omitempty"`
+	Spec   IPv4NetworkSpec   `json:"spec"`
+	Status IPv4NetworkStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// MyTypeList contains a list of MyType
-type MyTypeList struct {
+// IPv4NetworkList contains a list of IPv4Network
+type IPv4NetworkList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []MyType `json:"items"`
+	Items           []IPv4Network `json:"items"`
 }
 
-// MyType type metadata.
+// IPv4Network type metadata.
 var (
-	MyTypeKind             = reflect.TypeOf(MyType{}).Name()
-	MyTypeGroupKind        = schema.GroupKind{Group: Group, Kind: MyTypeKind}.String()
-	MyTypeKindAPIVersion   = MyTypeKind + "." + SchemeGroupVersion.String()
-	MyTypeGroupVersionKind = SchemeGroupVersion.WithKind(MyTypeKind)
+	IPv4NetworkKind             = reflect.TypeOf(IPv4Network{}).Name()
+	IPv4NetworkGroupKind        = schema.GroupKind{Group: Group, Kind: IPv4NetworkKind}.String()
+	IPv4NetworkKindAPIVersion   = IPv4NetworkKind + "." + SchemeGroupVersion.String()
+	IPv4NetworkGroupVersionKind = SchemeGroupVersion.WithKind(IPv4NetworkKind)
 )
 
 func init() {
-	SchemeBuilder.Register(&MyType{}, &MyTypeList{})
+	SchemeBuilder.Register(&IPv4Network{}, &IPv4NetworkList{})
 }

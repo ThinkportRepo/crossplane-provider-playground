@@ -1,10 +1,10 @@
-module github.com/crossplane/provider-template
+module github.com/ThinkportRepo/crossplane-provider-playground
 
 go 1.20
 
 require (
 	github.com/crossplane/crossplane-runtime v1.14.0-rc.0.0.20230815060607-4f3cb3d9fd2b
-	github.com/crossplane/crossplane-tools v0.0.0-20230714144037-2684f4bc7638
+	github.com/crossplane/crossplane-tools v0.0.0-20230925130601-628280f8bf79
 	github.com/google/go-cmp v0.5.9
 	github.com/pkg/errors v0.9.1
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6

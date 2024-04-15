@@ -14,21 +14,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package apis contains Kubernetes API for the Template provider.
+// Package apis contains Kubernetes API for the xacinfoblox provider.
 package apis
 
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	samplev1alpha1 "github.com/crossplane/provider-template/apis/sample/v1alpha1"
-	templatev1alpha1 "github.com/crossplane/provider-template/apis/v1alpha1"
+	xacinfobloxv1alpha1 "github.com/ThinkportRepo/crossplane-provider-playground/apis/v1alpha1";
+	networkv1alpha1 "github.com/ThinkportRepo/crossplane-provider-playground/apis/network/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
-		templatev1alpha1.SchemeBuilder.AddToScheme,
-		samplev1alpha1.SchemeBuilder.AddToScheme,
+		xacinfobloxv1alpha1.SchemeBuilder.AddToScheme,
+		networkv1alpha1.SchemeBuilder.AddToScheme,
 	)
 }
 
